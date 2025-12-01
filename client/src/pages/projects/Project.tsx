@@ -1,10 +1,15 @@
+import React from 'react';
+import ProjectsIntro from '../../components/projectintro/Projectintro';
+import ProjectsGallery from '../../components/projectgallery/Projectgallery';
 import './project.css'
-function Project() {
-  return (
-    <div className="overall-project-container">
-        <h1>Projects</h1>
-    </div>
-  )
-}
 
-export default Project
+const ProjectsPage: React.FC = () => {
+  return (
+    <div className="projects-page">
+      <ProjectsIntro />
+      <ProjectsGallery />
+    </div>
+  );
+};
+
+export default ProjectsPage;
