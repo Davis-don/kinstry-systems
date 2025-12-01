@@ -149,7 +149,7 @@ function Whychoseus() {
         </div>
         
         <h2 className="whyus-main-title">
-          Why <span className="whyus-title-accent">Choose Kinstry</span> Systems?
+          Why <span className="whyus-title-accent">spanChoose Kinstry</span> Systems?
         </h2>
         
         <p className="whyus-subtitle">

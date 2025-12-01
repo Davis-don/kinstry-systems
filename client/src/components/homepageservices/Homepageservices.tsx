@@ -26,7 +26,7 @@ function Homepageservices() {
         "Design Handoff"
       ],
       ctaText: "View Design Portfolio",
-      ctaLink: "/services/ui-ux-design"
+      ctaLink: "/projects"
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ function Homepageservices() {
         "ROI Analysis"
       ],
       ctaText: "Schedule Consultation",
-      ctaLink: "/services/consultation",
+      ctaLink: "/contact",
       highlight: true
     },
     {
@@ -57,7 +57,7 @@ function Homepageservices() {
         "Mobile Optimization"
       ],
       ctaText: "See Portfolio Examples",
-      ctaLink: "/services/portfolio"
+      ctaLink: "/projects"
     },
     {
       id: 4,
@@ -72,7 +72,7 @@ function Homepageservices() {
         "Maintenance & Support"
       ],
       ctaText: "Explore Our Solutions",
-      ctaLink: "/services/systems-development"
+      ctaLink: "/projects"
     },
     {
       id: 5,
@@ -87,7 +87,7 @@ function Homepageservices() {
         "AI Strategy"
       ],
       ctaText: "Discover AI Solutions",
-      ctaLink: "/services/ai-integration"
+      ctaLink: "/projects"
     },
     {
       id: 6,
@@ -102,7 +102,7 @@ function Homepageservices() {
         "Conversion Optimization"
       ],
       ctaText: "Get SEO Analysis",
-      ctaLink: "/services/seo-marketing"
+      ctaLink: "/projects"
     }
   ]
 

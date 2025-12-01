@@ -1,6 +1,7 @@
 import './header.css';
 import { useThemeStore } from '../../store/themestore';
 import { useMobileMenuStore } from '../../store/menustore';
+import { useNavigate } from 'react-router-dom';
 
 // Hamburger Menu Icon Component
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
@@ -20,6 +21,7 @@ const CloseIcon = () => (
 );
 
 function Header() {
+  const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useThemeStore();
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useMobileMenuStore();
 
@@ -30,9 +32,15 @@ function Header() {
     { id: 'contact', label: 'Contact', path: '/contact' },
   ];
 
-  const handleNavClick = (path: string) => {
-    // Add your navigation logic here
-    console.log(`Navigating to ${path}`);
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    navigate(path);
+    closeMobileMenu();
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    navigate('/');
     closeMobileMenu();
   };
 
@@ -43,7 +51,7 @@ function Header() {
         <div className="overall-header-sub-container">
           {/* Creative Logo */}
           <div className="header-logo-container">
-            <a href="/" className="logo-graphic">
+            <a href="/" className="logo-graphic" onClick={handleLogoClick}>
               <div className="logo-k-wrapper">
                 <div className="logo-k-vertical"></div>
                 <div className="logo-k-diagonal-1"></div>
@@ -66,10 +74,7 @@ function Header() {
                 <li key={item.id} className="nav-item">
                   <a 
                     href={item.path} 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.path);
-                    }}
+                    onClick={(e) => handleNavClick(e, item.path)}
                     className="nav-link"
                   >
                     {item.label}
@@ -143,7 +148,7 @@ function Header() {
           {/* Sidebar Header */}
           <div className="mobile-sidebar-header">
             <div className="mobile-sidebar-logo">
-              <a href="/" className="logo-graphic" onClick={closeMobileMenu}>
+              <a href="/" className="logo-graphic" onClick={handleLogoClick}>
                 <div className="logo-k-wrapper">
                   <div className="logo-k-vertical"></div>
                   <div className="logo-k-diagonal-1"></div>
@@ -175,10 +180,7 @@ function Header() {
                   <a 
                     href={item.path}
                     className="mobile-nav-item"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.path);
-                    }}
+                    onClick={(e) => handleNavClick(e, item.path)}
                   >
                     {item.label}
                   </a>

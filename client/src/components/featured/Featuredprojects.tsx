@@ -325,13 +325,13 @@ useEffect(() => {
                         Visit
                       </a>
                       
-                      <a 
+                      {/* <a 
                         href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                         className="project-details-btn"
                       >
                         <Eye size={18} />
                         Details
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -407,7 +407,7 @@ useEffect(() => {
             and cutting-edge technology.
           </p>
           
-          <a href="/portfolio" className="view-all-button">
+          <a href="/projects" className="view-all-button">
             <Globe size={20} />
             View Complete Portfolio
             <ArrowRight size={20} />

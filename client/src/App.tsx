@@ -1,6 +1,8 @@
 import './App.css';
 import Homepage from './pages/home/Homepage';
 import Mainlayout from './layouts/mainLayout/Mainlayout';
+import Project from './pages/projects/Project';
+import Contact from './pages/contact/Contact';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useThemeStore } from './store/themestore';
@@ -140,6 +142,17 @@ function App() {
           <Route path="/" element={
             <Mainlayout>
               <Homepage />
+            </Mainlayout>
+          } />
+             <Route path="/projects" element={
+            <Mainlayout>
+              <Project />
+            </Mainlayout>
+          } />
+
+           <Route path="/contact" element={
+            <Mainlayout>
+              <Contact />
             </Mainlayout>
           } />
           {/* Add more routes as needed */}

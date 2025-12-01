@@ -1,7 +1,9 @@
 import './hero.css'
 import { ChevronRight, Zap, Shield, Users, TrendingUp } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 function Hero() {
+  const navigate = useNavigate()
   return (
     <div className="hero-container">
       {/* Background Effects */}
@@ -31,7 +33,7 @@ function Hero() {
           <div className="hero-text-section">
             <div className="hero-badge">
               <Zap size={16} />
-              <span>Innovating Since 2020</span>
+              <span>Innovating Since 2022</span>
             </div>
             
             <h1 className="hero-main-heading">
@@ -63,11 +65,11 @@ function Hero() {
             
             {/* CTA Buttons */}
             <div className="hero-cta-group">
-              <button className="hero-primary-btn">
+              <button onClick={()=>navigate("/contact")} className="hero-primary-btn">
                 Start Your Digital Journey
                 <ChevronRight size={20} style={{ marginLeft: '0.5rem' }} />
               </button>
-              <button className="hero-secondary-btn">
+              <button onClick={()=>navigate("/projects")} className="hero-secondary-btn">
                 View Our Work
               </button>
             </div>
