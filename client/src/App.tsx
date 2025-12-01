@@ -3,46 +3,33 @@ import Homepage from './pages/home/Homepage';
 import Mainlayout from './layouts/mainLayout/Mainlayout';
 import Project from './pages/projects/Project';
 import Contact from './pages/contact/Contact';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useThemeStore } from './store/themestore';
 import { useMobileMenuStore } from './store/menustore';
 
-function App() {
-  const { isDarkMode } = useThemeStore();
-  const { isMobileMenuOpen } = useMobileMenuStore();
+// Component to handle scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  // Apply theme to document root
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDarkMode) {
-      root.classList.add('dark-theme');
-      root.classList.remove('light-theme');
-    } else {
-      root.classList.add('light-theme');
-      root.classList.remove('dark-theme');
-    }
-  }, [isDarkMode]);
+    // Scroll to top instantly when route changes
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' as ScrollBehavior
+    });
+    
+    // Also ensure body scroll is restored
+    document.body.style.overflow = 'auto';
+    document.body.classList.remove('sidebar-open');
+  }, [pathname]);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    const body = document.body;
-    if (isMobileMenuOpen) {
-      body.classList.add('sidebar-open');
-      body.style.overflow = 'hidden';
-    } else {
-      body.classList.remove('sidebar-open');
-      body.style.overflow = 'auto';
-    }
+  return null;
+}
 
-    // Cleanup function
-    return () => {
-      body.classList.remove('sidebar-open');
-      body.style.overflow = 'auto';
-    };
-  }, [isMobileMenuOpen]);
-
-  // Add futuristic cursor effect
+// Custom cursor component
+function CustomCursor() {
   useEffect(() => {
     const cursorDot = document.createElement('div');
     cursorDot.className = 'cursor-dot';
@@ -81,7 +68,7 @@ function App() {
     document.body.appendChild(cursorDot);
     document.body.appendChild(cursorOutline);
 
-    const moveCursor = (e:any) => {
+    const moveCursor = (e: MouseEvent) => {
       cursorDot.style.left = `${e.clientX}px`;
       cursorDot.style.top = `${e.clientY}px`;
       cursorOutline.style.left = `${e.clientX}px`;
@@ -102,8 +89,12 @@ function App() {
       cursorOutline.style.height = '40px';
     };
 
-    const handleLinkHover = (e:any) => {
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+    const handleLinkHover = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' || 
+          target.tagName === 'BUTTON' || 
+          target.closest('a') || 
+          target.closest('button')) {
         cursorDot.style.width = '16px';
         cursorDot.style.height = '16px';
         cursorDot.style.background = 'var(--accent-cyan)';
@@ -120,37 +111,99 @@ function App() {
       }
     };
 
-    document.addEventListener('mousemove', moveCursor);
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseover', handleLinkHover);
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion) {
+      document.addEventListener('mousemove', moveCursor);
+      document.addEventListener('mousedown', handleMouseDown);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('mouseover', handleLinkHover);
+    }
 
     return () => {
-      document.removeEventListener('mousemove', moveCursor);
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseover', handleLinkHover);
+      if (!prefersReducedMotion) {
+        document.removeEventListener('mousemove', moveCursor);
+        document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('mouseover', handleLinkHover);
+      }
       cursorDot.remove();
       cursorOutline.remove();
+    };
+  }, []);
+
+  return null;
+}
+
+function App() {
+  const { isDarkMode } = useThemeStore();
+  const { isMobileMenuOpen } = useMobileMenuStore();
+
+  // Apply theme to document root
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.classList.add('dark-theme');
+      root.classList.remove('light-theme');
+    } else {
+      root.classList.add('light-theme');
+      root.classList.remove('dark-theme');
+    }
+  }, [isDarkMode]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    const body = document.body;
+    if (isMobileMenuOpen) {
+      body.classList.add('sidebar-open');
+      body.style.overflow = 'hidden';
+    } else {
+      body.classList.remove('sidebar-open');
+      body.style.overflow = 'auto';
+    }
+
+    // Cleanup function
+    return () => {
+      body.classList.remove('sidebar-open');
+      body.style.overflow = 'auto';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle initial page load - scroll to top
+  useEffect(() => {
+    // Scroll to top on initial load
+    window.scrollTo(0, 0);
+    
+    // Also handle browser back/forward navigation
+    const handlePopState = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
   return (
     <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
       <Router>
+        <ScrollToTop />
+        <CustomCursor />
         <Routes>
           <Route path="/" element={
             <Mainlayout>
               <Homepage />
             </Mainlayout>
           } />
-             <Route path="/projects" element={
+          <Route path="/projects" element={
             <Mainlayout>
               <Project />
             </Mainlayout>
           } />
-
-           <Route path="/contact" element={
+          <Route path="/contact" element={
             <Mainlayout>
               <Contact />
             </Mainlayout>
