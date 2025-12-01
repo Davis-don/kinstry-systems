@@ -1,0 +1,327 @@
+/* ===== Contact Header - Futuristic Design ===== */
+.kinstry-contact-header {
+  padding: var(--space-4xl) 0 var(--space-3xl);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Container */
+.kc-header-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Badge */
+.kc-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 2rem;
+  background: var(--gradient-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  animation: kcBadgeFloat 3s ease-in-out infinite;
+}
+
+.kc-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-green);
+  animation: kcPulseGlow 2s ease-in-out infinite;
+  position: relative;
+}
+
+.kc-badge-dot::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+.kc-badge-text {
+  color: var(--accent-green);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* Title */
+.kc-header-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.kc-title-line-1 {
+  display: block;
+  color: var(--primary-text);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.kc-title-line-2 {
+  display: block;
+  position: relative;
+}
+
+.kc-title-highlight {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.kc-title-highlight::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(20px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: kcTitleGlow 4s ease-in-out infinite alternate;
+}
+
+.kc-title-underline {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  animation: kcUnderlineWave 3s ease-in-out infinite;
+}
+
+/* Subtitle */
+.kc-header-subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.kc-subtitle-text {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  line-height: 1.7;
+  color: var(--secondary-text);
+  margin-bottom: 3rem;
+}
+
+.kc-subtitle-spark {
+  color: var(--accent-green);
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.kc-subtitle-spark::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  animation: kcSparkLine 2s ease-in-out infinite;
+}
+
+/* Stats */
+.kc-header-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.kc-stat-item {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background: var(--gradient-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  min-width: 140px;
+  transition: all var(--transition-futuristic);
+  position: relative;
+  overflow: hidden;
+}
+
+.kc-stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.kc-stat-item:hover::before {
+  left: 100%;
+}
+
+.kc-stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glow-combined);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.kc-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.kc-stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes kcBadgeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes kcPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent-green);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-green);
+    transform: scale(1.2);
+  }
+}
+
+@keyframes kcTitleGlow {
+  0% {
+    opacity: 0.4;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(5px) scale(1.05);
+  }
+}
+
+@keyframes kcUnderlineWave {
+  0%, 100% {
+    width: 120px;
+    opacity: 1;
+  }
+  50% {
+    width: 150px;
+    opacity: 0.8;
+  }
+}
+
+@keyframes kcSparkLine {
+  0%, 100% {
+    width: 100%;
+    opacity: 0.7;
+  }
+  50% {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .kinstry-contact-header {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+  }
+  
+  .kc-header-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .kc-header-badge {
+    padding: 0.625rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .kc-header-stats {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .kc-stat-item {
+    padding: 1.25rem 1.5rem;
+    min-width: 120px;
+    flex: 1;
+  }
+  
+  .kc-stat-number {
+    font-size: 1.75rem;
+  }
+}
+
+/* Dark Theme Adjustments */
+.dark-theme .kc-header-badge {
+  background: rgba(31, 41, 55, 0.6);
+}
+
+.dark-theme .kc-stat-item {
+  background: rgba(31, 41, 55, 0.6);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .kc-header-badge,
+  .kc-badge-dot,
+  .kc-title-highlight::before,
+  .kc-title-underline,
+  .kc-subtitle-spark::before,
+  .kc-stat-item {
+    animation: none !important;
+  }
+  
+  .kc-stat-item:hover {
+    transform: none;
+  }
+}
