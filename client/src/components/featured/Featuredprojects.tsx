@@ -1,4 +1,5 @@
 import './featuredprojects.css'
+import { useNavigate } from 'react-router-dom'
 import { 
   ExternalLink, 
   ChevronLeft, 
@@ -217,6 +218,7 @@ useEffect(() => {
     e.preventDefault();
     nextSlide();
   };
+  const navigate = useNavigate();
 
   return (
     <section className="futuristic-projects-showcase" id="projects-showcase">
@@ -406,7 +408,7 @@ useEffect(() => {
             and cutting-edge technology.
           </p>
           
-          <a href="/projects" className="view-all-button">
+          <a onClick={()=>navigate("/projects")} className="view-all-button">
             <Globe size={20} />
             View Complete Portfolio
             <ArrowRight size={20} />

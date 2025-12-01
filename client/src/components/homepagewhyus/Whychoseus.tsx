@@ -1,4 +1,5 @@
 import './whyus.css'
+import { useNavigate } from 'react-router-dom'
 import { 
   Zap, 
   Shield, 
@@ -130,6 +131,7 @@ function Whychoseus() {
     "E-commerce Experts",
     "FinTech Partners"
   ]
+  const navigate = useNavigate();
 
   return (
     <section className="kinstry-why-choose-section" id="why-choose-us">
@@ -318,13 +320,13 @@ function Whychoseus() {
         </p>
         
         <div className="cta-button-group">
-          <a href="/contact" className="cta-primary-btn">
+          <a onClick={()=>navigate("contact")} className="cta-primary-btn">
             <Rocket size={20} />
             Start Your Project Today
             <ArrowRight size={20} />
           </a>
           
-          <a href="/contact" className="cta-secondary-btn">
+          <a onClick={()=>navigate("/contact")} className="cta-secondary-btn">
             <MessageSquare size={20} />
             Schedule Free Consultation
           </a>

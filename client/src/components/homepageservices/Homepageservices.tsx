@@ -1,4 +1,5 @@
 import './homepageservices.css'
+import { useNavigate } from 'react-router-dom'
 import { 
   Palette, 
   Users, 
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react'
 
 function Homepageservices() {
+  const navigate = useNavigate()
   const services = [
     {
       id: 1,
@@ -190,7 +192,7 @@ function Homepageservices() {
                   </ul>
                   
                   {/* CTA Button */}
-                  <a href={service.ctaLink} className="service-cta-btn">
+                  <a onClick={() => navigate(service.ctaLink)} className="service-cta-btn">
                     {service.ctaText}
                     <ChevronRight className="cta-arrow" size={18} />
                   </a>
