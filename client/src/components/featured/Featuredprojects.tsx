@@ -1,7 +1,6 @@
 import './featuredprojects.css'
 import { 
   ExternalLink, 
-  Eye, 
   ChevronLeft, 
   ChevronRight, 
   Star,
