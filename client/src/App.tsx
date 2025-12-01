@@ -3,6 +3,8 @@ import Homepage from './pages/home/Homepage';
 import Mainlayout from './layouts/mainLayout/Mainlayout';
 import Project from './pages/projects/Project';
 import Contact from './pages/contact/Contact';
+import Services from './pages/services/Services';
+import Aboutpage from './pages/about/Aboutpage';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useThemeStore } from './store/themestore';
@@ -206,6 +208,16 @@ function App() {
           <Route path="/contact" element={
             <Mainlayout>
               <Contact />
+            </Mainlayout>
+          } />
+            <Route path="/about" element={
+              <Mainlayout>
+                <Aboutpage />
+              </Mainlayout>
+            } />
+          <Route path="/services" element={
+            <Mainlayout>
+              <Services />
             </Mainlayout>
           } />
           {/* Add more routes as needed */}

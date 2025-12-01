@@ -1,0 +1,146 @@
+/* ===== Main Services Page Styles ===== */
+.kinstry-services-main {
+  position: relative;
+  width: 100%;
+  background: var(--primary-bg);
+  color: var(--primary-text);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Connection Lines Between Sections */
+.kinstry-services-main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-green) 20%,
+    var(--accent-cyan) 80%,
+    transparent
+  );
+  opacity: 0.1;
+  z-index: 1;
+}
+
+/* Section Spacing */
+.kinstry-services-intro + .kinstry-services-grid {
+  margin-top: calc(var(--space-4xl) * -1);
+}
+
+.kinstry-services-grid + .kinstry-services-cta {
+  margin-top: calc(var(--space-4xl) * -1);
+}
+
+/* Loading State */
+.kinstry-services-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 2rem;
+}
+
+.kinstry-services-loader {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.kinstry-services-loader::before,
+.kinstry-services-loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.kinstry-services-loader::before {
+  border-top-color: var(--accent-green);
+  animation: servicesSpin 1.5s linear infinite;
+}
+
+.kinstry-services-loader::after {
+  border-top-color: var(--accent-cyan);
+  animation: servicesSpin 1.5s linear infinite reverse;
+  opacity: 0.7;
+}
+
+@keyframes servicesSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.kinstry-services-error {
+  text-align: center;
+  padding: var(--space-4xl) 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.kinstry-error-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.kinstry-error-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--error-color);
+}
+
+.kinstry-error-message {
+  color: var(--secondary-text);
+  margin-bottom: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .kinstry-services-intro + .kinstry-services-grid,
+  .kinstry-services-grid + .kinstry-services-cta {
+    margin-top: calc(var(--space-3xl) * -1);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .kinstry-services-main {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .ks-cta-button,
+  .ks-tech-tag,
+  .ks-feature-tag {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+  
+  .ks-cta-card {
+    background: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .ks-service-card,
+  .ks-cta-card {
+    border: 2px solid var(--accent-green);
+  }
+  
+  .ks-tech-tag,
+  .ks-feature-tag {
+    border: 1px solid var(--accent-green);
+  }
+}

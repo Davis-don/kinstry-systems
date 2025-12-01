@@ -1,0 +1,430 @@
+/* ===== Services CTA - Futuristic Call to Action ===== */
+.kinstry-services-cta {
+  padding: var(--space-4xl) 0;
+  background: var(--primary-bg);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Background Elements */
+.ks-cta-nebula {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1200px, 95vw);
+  height: min(600px, 60vh);
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: ksNebulaFloat 20s ease-in-out infinite alternate;
+}
+
+.ks-cta-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: ksGridPulse 30s linear infinite;
+}
+
+/* Container */
+.ks-cta-container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* CTA Card */
+.ks-cta-card {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-2xl);
+  padding: 4rem 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 60px rgba(16, 185, 129, 0.3),
+    0 0 120px rgba(6, 182, 212, 0.2);
+}
+
+.ks-cta-hologram {
+  position: absolute;
+  inset: 0;
+  background: var(--hologram-effect);
+  animation: hologramMove 15s linear infinite;
+  opacity: 0.2;
+}
+
+/* Rings */
+.ks-cta-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ks-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.ks-ring-1 {
+  width: 300px;
+  height: 300px;
+  animation: ksRingRotate 20s linear infinite reverse;
+}
+
+.ks-ring-2 {
+  width: 400px;
+  height: 400px;
+  animation: ksRingRotate 25s linear infinite;
+}
+
+.ks-ring-3 {
+  width: 500px;
+  height: 500px;
+  animation: ksRingRotate 30s linear infinite reverse;
+}
+
+/* Content */
+.ks-cta-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+}
+
+.ks-cta-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.ks-icon-spark {
+  font-size: 2.5rem;
+  animation: ksSparkle 2s ease-in-out infinite;
+}
+
+.ks-cta-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.ks-cta-title-main {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ks-cta-title-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: 0;
+}
+
+.ks-cta-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Stats */
+.ks-cta-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.ks-stat {
+  text-align: center;
+}
+
+.ks-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ks-stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Button */
+.ks-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 3rem;
+  background: white;
+  color: var(--accent-green-dark);
+  border-radius: var(--radius-xl);
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-futuristic);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.ks-button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ks-button-text {
+  letter-spacing: 0.5px;
+}
+
+.ks-button-arrow {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.ks-button-glow {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-secondary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.ks-button-particles {
+  position: absolute;
+  inset: 0;
+  background: var(--hologram-effect);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.ks-cta-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(255, 255, 255, 0.3);
+  color: var(--accent-green);
+}
+
+.ks-cta-button:hover .ks-button-glow {
+  opacity: 0.1;
+}
+
+.ks-cta-button:hover .ks-button-particles {
+  opacity: 0.2;
+}
+
+.ks-cta-button:hover .ks-button-arrow {
+  transform: translateX(5px);
+}
+
+/* Orbit Dots */
+.ks-cta-orbit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+}
+
+.ks-orbit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.ks-orbit-dot:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ksOrbit1 4s linear infinite;
+}
+
+.ks-orbit-dot:nth-child(2) {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation: ksOrbit2 4s linear infinite;
+  animation-delay: 1.33s;
+}
+
+.ks-orbit-dot:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ksOrbit3 4s linear infinite;
+  animation-delay: 2.66s;
+}
+
+/* Animations */
+@keyframes ksNebulaFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(10deg);
+  }
+}
+
+@keyframes ksGridPulse {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes ksRingRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ksSparkle {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+    transform: scale(1.1);
+  }
+}
+
+@keyframes ksOrbit1 {
+  0%, 100% { transform: translateX(-50%) rotate(0deg) translateY(0); }
+  25% { transform: translateX(-50%) rotate(90deg) translateY(20px); }
+  50% { transform: translateX(-50%) rotate(180deg) translateY(0); }
+  75% { transform: translateX(-50%) rotate(270deg) translateY(-20px); }
+}
+
+@keyframes ksOrbit2 {
+  0%, 100% { transform: translateY(-50%) rotate(0deg) translateX(0); }
+  25% { transform: translateY(-50%) rotate(90deg) translateX(-20px); }
+  50% { transform: translateY(-50%) rotate(180deg) translateX(0); }
+  75% { transform: translateY(-50%) rotate(270deg) translateX(20px); }
+}
+
+@keyframes ksOrbit3 {
+  0%, 100% { transform: translateX(-50%) rotate(0deg) translateY(0); }
+  25% { transform: translateX(-50%) rotate(90deg) translateY(-20px); }
+  50% { transform: translateX(-50%) rotate(180deg) translateY(0); }
+  75% { transform: translateX(-50%) rotate(270deg) translateY(20px); }
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .kinstry-services-cta {
+    padding: var(--space-3xl) 0;
+  }
+  
+  .ks-cta-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .ks-cta-card {
+    padding: 3rem 2rem;
+  }
+  
+  .ks-cta-stats {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .ks-stat-value {
+    font-size: 1.75rem;
+  }
+  
+  .ks-cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .ks-ring-1,
+  .ks-ring-2,
+  .ks-ring-3 {
+    display: none;
+  }
+}
+
+/* Dark Theme Adjustments */
+.dark-theme .ks-cta-nebula {
+  opacity: 0.5;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ks-cta-nebula,
+  .ks-cta-grid,
+  .ks-cta-hologram,
+  .ks-ring,
+  .ks-icon-spark,
+  .ks-orbit-dot,
+  .ks-cta-button {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .ks-cta-button:hover {
+    transform: none;
+  }
+  
+  .ks-cta-button:hover .ks-button-arrow {
+    transform: none;
+  }
+}
