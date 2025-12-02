@@ -65,12 +65,12 @@ function Aboutinfo() {
                 operations, envisioned a future where AI could simplify complex processes.
               </p>
               
-              <p className="story-text">
-                We started by developing our first AI-powered school management system, 
-                <span className="story-highlight"> FR Baldo Integrated</span>, which automated administrative tasks, 
-                media management, and communication. This success showed us the immense 
-                potential of intelligent systems to transform industries.
-              </p>
+       <p className="story-text">
+  We started by developing our first AI-powered farm management system, 
+  <span className="story-highlight"> AgriAI Platform</span>, which automated crop monitoring, 
+  resource allocation, and supply chain communication. This success showed us the immense 
+  potential of intelligent systems to transform industries.
+</p>
               
               <p className="story-text">
                 Today, we're pioneering <span className="story-highlight">AI-driven solutions</span> that go beyond 

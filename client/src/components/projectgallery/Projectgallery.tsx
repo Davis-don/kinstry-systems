@@ -17,72 +17,102 @@ const ProjectsGallery: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const projects: Project[] = [
-    {
-      id: 1,
-      title: 'Quantum Finance Platform',
-      category: 'Web3 & Finance',
-      description: 'A decentralized finance platform with AI-powered trading algorithms and real-time market analytics.',
-      technologies: ['React', 'TypeScript', 'Solidity', 'Web3.js', 'Node.js'],
-      year: 2024,
-      status: 'Live',
-      features: ['AI Trading Algorithms', 'Cross-chain Support', 'Real-time Analytics', 'Secure Wallet Integration'],
-      color: '#10b981'
-    },
-    {
-      id: 2,
-      title: 'MediCare AI Assistant',
-      category: 'Healthcare & AI',
-      description: 'Intelligent healthcare platform using machine learning for patient diagnostics and treatment recommendations.',
-      technologies: ['Python', 'TensorFlow', 'React Native', 'GraphQL', 'AWS'],
-      year: 2024,
-      status: 'Development',
-      features: ['ML Diagnostics', 'Patient Monitoring', 'Telemedicine', 'Health Analytics'],
-      color: '#06b6d4'
-    },
-    {
-      id: 3,
-      title: 'EcoTrack Sustainability',
-      category: 'IoT & Green Tech',
-      description: 'IoT-powered environmental monitoring system for tracking carbon footprint and sustainability metrics.',
-      technologies: ['IoT Sensors', 'React', 'Python', 'MongoDB', 'Redis'],
-      year: 2023,
-      status: 'Live',
-      features: ['Real-time Sensors', 'Carbon Analytics', 'Sustainability Reports', 'Mobile Dashboard'],
-      color: '#8b5cf6'
-    },
-    {
-      id: 4,
-      title: 'Nexus Commerce Platform',
-      category: 'E-commerce',
-      description: 'Next-generation e-commerce platform with AR product visualization and AI-driven recommendations.',
-      technologies: ['Next.js', 'Three.js', 'Node.js', 'PostgreSQL', 'Redis'],
-      year: 2024,
-      status: 'Live',
-      features: ['AR Visualization', 'AI Recommendations', 'Real-time Chat', 'Multi-vendor Support'],
-      color: '#f59e0b'
-    },
-    {
-      id: 5,
-      title: 'UrbanFlow Smart City',
-      category: 'Government Tech',
-      description: 'Centralized dashboard for smart city management with real-time data visualization and IoT integration.',
-      technologies: ['Vue.js', 'D3.js', 'Python', 'PostgreSQL', 'Kubernetes'],
-      year: 2024,
-      status: 'Development',
-      features: ['Real-time Data', 'Predictive Analytics', 'IoT Integration', 'Public API'],
-      color: '#ec4899'
-    },
-    {
-      id: 6,
-      title: 'LearnSphere EdTech',
-      category: 'Education',
-      description: 'Interactive learning platform with adaptive algorithms and virtual classroom experience.',
-      technologies: ['React', 'WebRTC', 'Node.js', 'MongoDB', 'Socket.io'],
-      year: 2023,
-      status: 'Live',
-      features: ['Adaptive Learning', 'Virtual Classrooms', 'Progress Tracking', 'Gamification'],
-      color: '#3b82f6'
-    }
+   {
+  id: 1,
+  title: 'Fr Baldo – Integrated School Management System',
+  category: 'Education & Administration',
+  description: 'A fully integrated school management system that handles events, gallery, academic records, communication, and general school operations.',
+  technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
+  year: 2024,
+  status: 'Live',
+  features: [
+    'School Events Management',
+    'Photo & Media Gallery',
+    'Student Information System',
+    'Class & Teacher Management',
+    'Announcements & Notifications',
+    'Role-based Access Control'
+  ],
+  color: '#10b981'
+},
+
+{
+  id: 2,
+  title: 'JungleHeats Travel – Booking & Itinerary System',
+  category: 'Travel & Tourism',
+  description: 'A complete travel management system that handles bookings, itineraries, destinations, travel packages, and customer communication.',
+  technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB'],
+  year: 2024,
+  status: 'Live',
+  features: [
+    'Travel Bookings',
+    'Itinerary Builder',
+    'Package Management',
+    'Destination Gallery',
+    'Customer Support & Messaging',
+    'Secure Payments Integration'
+  ],
+  color: '#06b6d4'
+},
+
+
+   {
+  id: 3,
+  title: 'Masomo Analytics – Live Courses & Payment Platform',
+  category: 'EdTech & Data',
+  description: 'A modern education analytics platform offering live courses, student insights, performance tracking, and seamless payment integration.',
+  technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
+  year: 2024,
+  status: 'Development',
+  features: [
+    'Live & Recorded Courses',
+    'Student Progress Analytics',
+    'Integrated Payments',
+    'Course Management Dashboard',
+    'Instructor & Student Portal',
+    'Real-time Activity Tracking'
+  ],
+  color: '#8b5cf6'
+},
+
+  {
+  id: 4,
+  title: 'AgriAI – Smart Crop & Disease Monitoring System',
+  category: 'Agriculture & AI',
+  description: 'An AI-powered agricultural intelligence platform that monitors crops, predicts diseases, analyzes soil and weather data, and provides actionable insights for farmers.',
+  technologies: ['Vue.js', 'Python', 'TensorFlow', 'PostgreSQL', 'D3.js'],
+  year: 2024,
+  status: 'Development',
+  features: [
+    'Crop Growth Tracking',
+    'Disease Prediction',
+    'Soil & Weather Analytics',
+    'Farmer Advisory Dashboard',
+    'Image-based Crop Health Detection',
+    'Real-time Field Data Visualization'
+  ],
+  color: '#ec4899'
+},
+
+  {
+  id: 6,
+  title: 'Hotel Amplitude – Booking & Hospitality Platform',
+  category: 'Hospitality & Management',
+  description: 'A modern hotel management platform offering room bookings, guest services, staff coordination, and real-time hotel analytics.',
+  technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Socket.io'],
+  year: 2023,
+  status: 'Concept',
+  features: [
+    'Online Room Booking',
+    'Guest Management',
+    'Staff & Service Coordination',
+    'Real-time Hotel Dashboard',
+    'Payment Integration',
+    'Room Availability & Scheduling'
+  ],
+  color: '#3b82f6'
+}
+
   ];
 
   const statusConfig = {
