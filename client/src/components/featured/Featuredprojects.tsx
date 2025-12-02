@@ -1,5 +1,9 @@
 import './featuredprojects.css'
 import { useNavigate } from 'react-router-dom'
+import frbaldo from '../../assets/images/fr-baldo.jpg'
+import agriconnect from '../../assets/images/agri-tech.jpg'
+import jungletravel from '../../assets/images/jungle-hearts.jpg'
+import edutech from '../../assets/images/masomo.jpg'
 import { 
   ExternalLink, 
   ChevronLeft, 
@@ -67,12 +71,12 @@ function Featuredprojects() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "FR Baldo Integrated",
+      title: "FR Baldo Integrated Secondary School",
       description: "Advanced school management system handling media, student data, and administrative tasks with modern interface and robust features.",
-      image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: frbaldo,
       url: "https://www.frbaldointegrated.co.ke/",
       status: "live",
-      techStack: ["React", "Node.js", "MongoDB", "Cloud", "API"],
+      techStack: ["React", "Node.js", "Postgres", "Cloud", "API"],
       features: ["Media Management", "Student Portal", "Admin Dashboard", "Reports", "Mobile Friendly"],
       icon: <Cpu size={24} />
     },
@@ -80,7 +84,7 @@ function Featuredprojects() {
       id: 2,
       title: "AgriConnect AI",
       description: "Intelligent farm management platform using AI to optimize agriculture, predict yields, and monitor crops with real-time analytics.",
-      image: "https://images.unsplash.com/photo-1761839257664-ecba169506c1?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: agriconnect,
       url: "https://agri-connect-client.onrender.com/",
       status: "dev",
       techStack: ["React", "Python", "AI/ML", "PostgreSQL", "WebSocket"],
@@ -91,10 +95,10 @@ function Featuredprojects() {
       id: 3,
       title: "JungleHearts Travel",
       description: "Complete travel management system with booking, itinerary planning, and customer management for adventure tourism companies.",
-      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: jungletravel,
       url: "https://www.jungleheartstravel.co.ke/",
       status: "live",
-      techStack: ["Next.js", "Express", "MySQL", "Stripe", "Maps"],
+      techStack: ["React", "Express", "MySQL", "Stripe", "Maps"],
       features: ["Booking System", "Itinerary Planner", "Payment Gateway", "CRM", "Tour Management"],
       icon: <Plane size={24} />
     },
@@ -102,10 +106,10 @@ function Featuredprojects() {
       id: 4,
       title: "EduTech Platform",
       description: "Interactive learning platform with virtual classrooms, progress tracking, and AI-powered personalized learning paths.",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      url: "#",
+      image: edutech,
+      url: "https://masomo-analytics-client.onrender.com/",
       status: "dev",
-      techStack: ["Vue.js", "Node.js", "Socket.io", "AWS", "AI"],
+      techStack: ["React", "Node.js", "Socket.io", "AWS", "AI"],
       features: ["Virtual Classes", "Progress Tracking", "AI Tutor", "Interactive Content", "Mobile Learning"],
       icon: <Palette size={24} />
     }

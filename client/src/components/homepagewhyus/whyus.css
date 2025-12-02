@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  color: var(--primary-text) !important;
 }
 
 /* Animated Background Elements */
@@ -22,6 +23,7 @@
     );
   z-index: 1;
   animation: bgFlowAbstract 30s linear infinite;
+  opacity: 0.1;
 }
 
 @keyframes bgFlowAbstract {
@@ -45,7 +47,7 @@
 
 .tech-element {
   position: absolute;
-  opacity: 0.1;
+  opacity: 0.08;
   animation: techFloat 20s ease-in-out infinite;
 }
 
@@ -82,19 +84,19 @@
 @keyframes techFloat {
   0%, 100% {
     transform: translate(0, 0) rotate(0deg);
-    opacity: 0.1;
+    opacity: 0.08;
   }
   25% {
     transform: translate(20px, -30px) rotate(90deg);
-    opacity: 0.15;
+    opacity: 0.12;
   }
   50% {
     transform: translate(-15px, 20px) rotate(180deg);
-    opacity: 0.1;
+    opacity: 0.08;
   }
   75% {
     transform: translate(30px, 15px) rotate(270deg);
-    opacity: 0.15;
+    opacity: 0.12;
   }
 }
 
@@ -112,7 +114,7 @@
   gap: 0.5rem;
   padding: 0.5rem 1.5rem;
   background: var(--gradient-primary);
-  color: white;
+  color: white !important;
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
@@ -142,11 +144,31 @@
   margin-bottom: 1rem;
   line-height: 1.1;
   position: relative;
+  color: var(--primary-text);
+}
+
+/* Force gradient text in both themes */
+.light-theme .whyus-main-title {
+  background: linear-gradient(135deg, #0f172a 0%, var(--accent-green) 50%, #0f172a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark-theme .whyus-main-title {
+  background: linear-gradient(135deg, #f1f5f9 0%, var(--accent-green) 50%, #f1f5f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .whyus-title-accent {
   position: relative;
   display: inline-block;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .whyus-title-accent::after {
@@ -175,10 +197,12 @@
 
 .whyus-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--secondary-text);
+  color: var(--primary-text) !important;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  opacity: 0.9;
+  font-weight: 500;
 }
 
 /* Main Content Grid */
@@ -219,6 +243,7 @@
   transition: all var(--transition-futuristic);
   position: relative;
   overflow: hidden;
+  color: var(--primary-text);
 }
 
 .counter-item:hover {
@@ -258,10 +283,11 @@
 
 .counter-label {
   font-size: 0.875rem;
-  color: var(--secondary-text);
+  color: var(--primary-text) !important;
   font-weight: 500;
   position: relative;
   z-index: 2;
+  opacity: 0.9;
 }
 
 /* Trust Indicators */
@@ -273,7 +299,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--primary-text);
+  color: var(--primary-text) !important;
 }
 
 .trust-logos {
@@ -289,13 +315,13 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   font-weight: 600;
-  color: var(--primary-text);
+  color: var(--primary-text) !important;
   transition: all var(--transition-fast);
 }
 
 .trust-logo-item:hover {
   background: var(--accent-green);
-  color: white;
+  color: white !important;
   transform: translateY(-2px);
   box-shadow: var(--glow-green);
   border-color: var(--accent-green);
@@ -324,6 +350,7 @@
   transition: all var(--transition-futuristic);
   position: relative;
   overflow: hidden;
+  color: var(--primary-text);
 }
 
 .feature-card:hover {
@@ -400,7 +427,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: var(--primary-text);
+  color: var(--primary-text) !important;
   position: relative;
   display: inline-block;
 }
@@ -422,9 +449,10 @@
 }
 
 .feature-description {
-  color: var(--secondary-text);
+  color: var(--primary-text) !important;
   line-height: 1.6;
   font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 /* Process Timeline */
@@ -472,7 +500,7 @@
   height: 60px;
   border-radius: 50%;
   background: var(--gradient-primary);
-  color: white;
+  color: white !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -502,13 +530,14 @@
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--primary-text);
+  color: var(--primary-text) !important;
 }
 
 .step-description {
-  color: var(--secondary-text);
+  color: var(--primary-text) !important;
   line-height: 1.6;
   font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 /* CTA Section */
@@ -523,6 +552,7 @@
   position: relative;
   z-index: 3;
   overflow: hidden;
+  color: var(--primary-text);
 }
 
 .whyus-cta-section::before {
@@ -556,14 +586,16 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: var(--primary-text);
 }
 
 .cta-subtitle {
-  color: var(--secondary-text);
+  color: var(--primary-text) !important;
   font-size: clamp(1rem, 2vw, 1.125rem);
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.6;
+  opacity: 0.9;
 }
 
 .cta-button-group {
@@ -579,13 +611,15 @@
   gap: 0.75rem;
   padding: 1rem 2.5rem;
   background: var(--gradient-primary);
-  color: white;
+  color: white !important;
   border-radius: var(--radius-lg);
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-futuristic);
   box-shadow: var(--glow-combined);
   animation: ctaPulse 3s ease-in-out infinite;
+  cursor: pointer;
+  border: none;
 }
 
 @keyframes ctaPulse {
@@ -611,17 +645,18 @@
   padding: 1rem 2.5rem;
   background: transparent;
   border: 2px solid var(--accent-green);
-  color: var(--accent-green);
+  color: var(--accent-green) !important;
   border-radius: var(--radius-lg);
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-futuristic);
   backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .cta-secondary-btn:hover {
   background: var(--accent-green);
-  color: white;
+  color: white !important;
   transform: translateY(-3px);
   box-shadow: var(--glow-green);
 }
@@ -694,21 +729,29 @@
   }
 }
 
-/* Dark Theme Adjustments */
-.dark-theme .counter-item,
-.dark-theme .feature-card {
-  background: var(--card-bg);
-  border-color: rgba(16, 185, 129, 0.2);
+/* Theme-specific text colors */
+.light-theme .whyus-subtitle,
+.light-theme .counter-label,
+.light-theme .trust-title,
+.light-theme .trust-logo-item,
+.light-theme .step-title,
+.light-theme .step-description,
+.light-theme .feature-title,
+.light-theme .feature-description,
+.light-theme .cta-subtitle {
+  color: #0f172a !important;
 }
 
-.dark-theme .trust-logo-item {
-  background: rgba(31, 41, 55, 0.6);
-  border-color: rgba(16, 185, 129, 0.2);
-}
-
-.dark-theme .whyus-cta-section {
-  background: rgba(31, 41, 55, 0.4);
-  border-color: rgba(16, 185, 129, 0.2);
+.dark-theme .whyus-subtitle,
+.dark-theme .counter-label,
+.dark-theme .trust-title,
+.dark-theme .trust-logo-item,
+.dark-theme .step-title,
+.dark-theme .step-description,
+.dark-theme .feature-title,
+.dark-theme .feature-description,
+.dark-theme .cta-subtitle {
+  color: #f1f5f9 !important;
 }
 
 /* Reduced Motion */

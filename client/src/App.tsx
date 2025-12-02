@@ -5,10 +5,12 @@ import Project from './pages/projects/Project';
 import Contact from './pages/contact/Contact';
 import Services from './pages/services/Services';
 import Aboutpage from './pages/about/Aboutpage';
+import Privacypolicy from './pages/privacy/Privacypolicy';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useThemeStore } from './store/themestore';
 import { useMobileMenuStore } from './store/menustore';
+import Terms from './pages/terms/Terms';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -218,6 +220,16 @@ function App() {
           <Route path="/services" element={
             <Mainlayout>
               <Services />
+            </Mainlayout>
+          } />
+          <Route path="/privacy" element={
+            <Mainlayout>
+              <Privacypolicy />
+            </Mainlayout>
+          } />
+          <Route path="/terms" element={
+            <Mainlayout>
+              <Terms />
             </Mainlayout>
           } />
           {/* Add more routes as needed */}

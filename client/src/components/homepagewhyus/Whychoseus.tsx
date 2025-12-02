@@ -151,7 +151,7 @@ function Whychoseus() {
         </div>
         
         <h2 className="whyus-main-title">
-          Why <span className="whyus-title-accent">spanChoose Kinstry</span> Systems?
+          Why <span className="whyus-title-accent">Choose Kinstry</span> Systems?
         </h2>
         
         <p className="whyus-subtitle">
@@ -320,7 +320,7 @@ function Whychoseus() {
         </p>
         
         <div className="cta-button-group">
-          <a onClick={()=>navigate("contact")} className="cta-primary-btn">
+          <a onClick={()=>navigate("/contact")} className="cta-primary-btn">
             <Rocket size={20} />
             Start Your Project Today
             <ArrowRight size={20} />

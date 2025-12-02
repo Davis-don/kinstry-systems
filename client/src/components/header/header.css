@@ -808,3 +808,124 @@ body.sidebar-open {
     will-change: transform;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Active State Styles ===== */
+.nav-item.active {
+  color: var(--accent-green);
+}
+
+.nav-item.active .nav-link {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+.nav-item.active::before {
+  width: 100%;
+  background: var(--gradient-primary);
+}
+
+.nav-item.active .nav-link:hover {
+  color: var(--accent-green);
+}
+
+.active-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  animation: activePulse 2s infinite;
+  box-shadow: var(--glow-green);
+}
+
+@keyframes activePulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: var(--glow-green);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px var(--accent-green);
+  }
+}
+
+/* Mobile Active State */
+.mobile-nav-item.active {
+  color: white;
+  background: var(--gradient-primary);
+  box-shadow: var(--glow-combined);
+  transform: translateX(8px);
+}
+
+.mobile-nav-item.active::before {
+  opacity: 0;
+}
+
+.mobile-nav-item.active:hover {
+  color: white;
+  background: var(--gradient-primary);
+}
+
+.mobile-active-indicator {
+  position: absolute;
+  right: 1rem;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: activePulse 2s infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Adjust desktop navigation spacing for 5 items */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .desktop-navigation-links ul {
+    gap: 1.1rem;
+  }
+  
+  .nav-item {
+    font-size: 0.88rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .desktop-navigation-links ul {
+    gap: 1.8rem;
+  }
+  
+  .nav-item {
+    font-size: 0.95rem;
+  }
+}
+
+/* Adjust the Projects/My Work link specifically for better spacing */
+@media (max-width: 767px) {
+  .mobile-nav-item {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Large desktop optimization */
+@media (min-width: 1200px) {
+  .desktop-navigation-links ul {
+    gap: 2rem;
+  }
+  
+  .nav-item {
+    font-size: 1rem;
+  }
+}

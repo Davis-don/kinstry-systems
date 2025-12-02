@@ -1,7 +1,7 @@
 import './header.css';
 import { useThemeStore } from '../../store/themestore';
 import { useMobileMenuStore } from '../../store/menustore';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Hamburger Menu Icon Component
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
@@ -22,6 +22,7 @@ const CloseIcon = () => (
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isDarkMode, toggleTheme } = useThemeStore();
   const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useMobileMenuStore();
 
@@ -29,8 +30,17 @@ function Header() {
     { id: 'home', label: 'Home', path: '/' },
     { id: 'about', label: 'About', path: '/about' },
     { id: 'services', label: 'Services', path: '/services' },
+    { id: 'projects', label: 'Our Work', path: '/projects' },
     { id: 'contact', label: 'Contact', path: '/contact' },
   ];
+
+  // Function to check if a nav item is active
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
@@ -71,13 +81,14 @@ function Header() {
           <nav className="desktop-navigation-links">
             <ul>
               {navItems.map((item) => (
-                <li key={item.id} className="nav-item">
+                <li key={item.id} className={`nav-item ${isActive(item.path) ? 'active' : ''}`}>
                   <a 
                     href={item.path} 
                     onClick={(e) => handleNavClick(e, item.path)}
                     className="nav-link"
                   >
                     {item.label}
+                    {isActive(item.path) && <div className="active-indicator"></div>}
                   </a>
                 </li>
               ))}
@@ -179,10 +190,11 @@ function Header() {
                 <li key={item.id}>
                   <a 
                     href={item.path}
-                    className="mobile-nav-item"
+                    className={`mobile-nav-item ${isActive(item.path) ? 'active' : ''}`}
                     onClick={(e) => handleNavClick(e, item.path)}
                   >
                     {item.label}
+                    {isActive(item.path) && <div className="mobile-active-indicator"></div>}
                   </a>
                 </li>
               ))}
