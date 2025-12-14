@@ -56,12 +56,20 @@ function Loginpage() {
     onSuccess: (data) => {
       // Store tokens in auth store
       login(data);
-      toast.success('Login successful!');
-
-      setTimeout(() => {
+      if(data.role=='superadmin'){
+        toast.success('Login successful!');
+        setTimeout(() => {
         // Redirect to admin account page
-        navigate('/admin-account');
+        navigate('/super-admin-account');
       }, 3000);
+      }
+      else{
+      toast.info('We are implementing this logic!');
+      }
+      
+
+
+      
     },
     onError: (error: Error) => {
       toast.error(error.message || 'Login failed. Please check your credentials.');

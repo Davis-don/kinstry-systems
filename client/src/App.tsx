@@ -230,7 +230,7 @@ function App() {
            <Route path="/login" element={
               <Loginpage />
           } />
-            <Route path="/admin-account" element={
+            <Route path="/super-admin-account" element={
               <Adminaccount/>
           } />
           <Route path="/privacy" element={
