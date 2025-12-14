@@ -1,17 +1,42 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 
-User = get_user_model()  # Get your CustomUser model dynamically
+User = get_user_model()
 
 class CreateUserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)  # Ensure password is write-only
+    password = serializers.CharField(write_only=True)
+    confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'date_of_birth', 'role')
-    
+        fields = (
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+            'confirm_password',
+            'date_of_birth',
+            'role'
+        )
+
+    def validate(self, data):
+        # Check passwords match
+        if data['password'] != data['confirm_password']:
+            raise serializers.ValidationError(
+                {"confirm_password": "Passwords do not match"}
+            )
+
+        # Django password strength validation
+        validate_password(data['password'])
+
+        return data
+
     def create(self, validated_data):
-        # Use create_user to properly hash the password
+        validated_data.pop('confirm_password')  # remove before saving
+
         user = User.objects.create_user(
             username=validated_data['username'],
             first_name=validated_data.get('first_name', ''),
@@ -22,3 +47,5 @@ class CreateUserSerializer(serializers.ModelSerializer):
             role=validated_data.get('role', 'customer')
         )
         return user
+
+

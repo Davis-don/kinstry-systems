@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 import { useThemeStore } from './store/themestore';
 import { useMobileMenuStore } from './store/menustore';
 import Terms from './pages/terms/Terms';
+import Loginpage from './features/admin/pages/login/Loginpage';
+import Adminaccount from './features/admin/pages/adminAccount/Adminaccount';
+
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -191,6 +194,7 @@ function App() {
     };
   }, []);
 
+
   return (
     <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
       <Router>
@@ -221,6 +225,13 @@ function App() {
             <Mainlayout>
               <Services />
             </Mainlayout>
+          } />
+
+           <Route path="/login" element={
+              <Loginpage />
+          } />
+            <Route path="/admin-account" element={
+              <Adminaccount/>
           } />
           <Route path="/privacy" element={
             <Mainlayout>
