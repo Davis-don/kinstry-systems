@@ -154,7 +154,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://kinstry-systems-client.onrender.com
+    "https://kinstry-systems-client.onrender.com"
 ]
 
 
