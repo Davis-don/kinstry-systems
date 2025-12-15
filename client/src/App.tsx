@@ -13,6 +13,7 @@ import { useMobileMenuStore } from './store/menustore';
 import Terms from './pages/terms/Terms';
 import Loginpage from './features/admin/pages/login/Loginpage';
 import Adminaccount from './features/admin/pages/adminAccount/Adminaccount';
+import Toasterlayout from './features/admin/layouts/Toasterlayout';
 
 
 // Component to handle scroll to top on route change
@@ -231,7 +232,9 @@ function App() {
               <Loginpage />
           } />
             <Route path="/super-admin-account" element={
+              <Toasterlayout>
               <Adminaccount/>
+              </Toasterlayout>
           } />
           <Route path="/privacy" element={
             <Mainlayout>

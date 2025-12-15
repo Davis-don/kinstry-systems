@@ -1,10 +1,11 @@
-import './newsletter.css'
+import NewsletterStats from "../nesletterstats/Newsletterstarts"
+import Createnewsletter from "../createnewsletter/Createnewsletter"
+
 function Newsletter() {
   return (
-    <div className="content-header">
-      <h2>Newsletter Management</h2>
-      <p>Create and manage newsletters for your subscribers. Track engagement and performance.</p>
-      {/* Newsletter content will be populated later */}
+    <div className="overall-Newsletter-container">
+      <NewsletterStats />
+      <Createnewsletter />
     </div>
   )
 }

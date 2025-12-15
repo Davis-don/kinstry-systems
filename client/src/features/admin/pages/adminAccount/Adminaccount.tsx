@@ -1,8 +1,8 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Dashboard from '../../components/dashboard/Dashboard';
 import Newsletter from '../../components/newsletter/Newsletter';
 import Settings from '../../components/settings/Settings';
-import './adminaccount.css'
+import './adminaccount.css';
 
 // Icons with consistent styling
 const DashboardIcon = () => (
@@ -162,7 +162,7 @@ function AdminAccount() {
       {/* Main Layout */}
       <div className="quantum-layout">
         {/* Sidebar */}
-        <aside className={`quantum-sidebar ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        <aside className={`quantum-sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
           <div className="quantum-sidebar-content">
             <div className="quantum-sidebar-header">
               <h2 className="quantum-sidebar-title">NAVIGATION</h2>
@@ -244,11 +244,9 @@ function AdminAccount() {
               </div>
             </div>
 
-            {/* Content Container */}
-            <div className="quantum-content-container">
-              <div className="quantum-content-scroll">
-                {renderActiveComponent()}
-              </div>
+            {/* Content Area - Full page scroll */}
+            <div className="quantum-content-area">
+              {renderActiveComponent()}
             </div>
 
             {/* Footer */}

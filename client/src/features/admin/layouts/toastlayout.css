@@ -1,0 +1,13 @@
+.overall-toast-layout {
+  position: relative;
+  min-height: 100vh;
+}
+
+.main-layout-component {
+  transition: filter 0.3s ease;
+}
+
+.main-layout-component.blurred {
+  filter: blur(2px);
+  pointer-events: none;
+}
