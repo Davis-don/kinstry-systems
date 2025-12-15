@@ -1,0 +1,35 @@
+# =========================
+# Core Django
+# =========================
+Django>=5.0,<6.1
+
+# =========================
+# Django REST Framework
+# =========================
+djangorestframework>=3.15
+djangorestframework-simplejwt>=5.3
+
+# =========================
+# Environment variables
+# =========================
+python-decouple>=3.8
+
+# =========================
+# PostgreSQL database
+# =========================
+psycopg2-binary>=2.9
+
+# =========================
+# CORS (React frontend)
+# =========================
+django-cors-headers>=4.3
+
+# =========================
+# Production server
+# =========================
+gunicorn>=22.0
+
+# =========================
+# Static files in production
+# =========================
+whitenoise>=6.6
