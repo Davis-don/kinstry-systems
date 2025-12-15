@@ -1,6 +1,8 @@
 import './footer.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 // Minimal Icon Components
 const PhoneIcon = () => (
@@ -36,20 +38,117 @@ const CheckIcon = () => (
   </svg>
 );
 
+const SpinnerIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" 
+          strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Define types based on your Django response structure
+interface SubscribeResponse {
+  message?: string;
+  email?: string[];
+  non_field_errors?: string[];
+}
+
 function Footer() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [serverMessage, setServerMessage] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && email.includes('@')) {
-      console.log('Subscribed with email:', email);
-      setIsSubscribed(true);
+  // Mutation for newsletter subscription
+  const subscribeMutation = useMutation<SubscribeResponse, Error, { email: string }>({
+    mutationFn: async (subscriptionData) => {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/newsletter/subscribe/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscriptionData),
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        // Extract the first error message from the response
+        const errorMessage = extractErrorMessage(data);
+        throw new Error(errorMessage);
+      }
+
+      return data;
+    },
+    onSuccess: (data) => {
+      // Extract success message from response
+      const message = data.message || 'Successfully subscribed to newsletter!';
+      toast.success(message);
+      setServerMessage(message);
+      setIsSuccess(true);
       setEmail('');
-      setTimeout(() => setIsSubscribed(false), 3000);
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setServerMessage(null);
+        setIsSuccess(false);
+      }, 5000);
+    },
+    onError: (error) => {
+      // Display the error message from server
+      toast.error(error.message);
+      setServerMessage(error.message);
+      setIsSuccess(false);
+      
+      // Clear error message after 5 seconds
+      setTimeout(() => {
+        setServerMessage(null);
+      }, 5000);
+    },
+  });
+
+  // Helper function to extract error message from Django response
+  const extractErrorMessage = (data: any): string => {
+    if (data.email) {
+      // Handle field-specific errors
+      return Array.isArray(data.email) ? data.email[0] : data.email;
+    } else if (data.non_field_errors) {
+      // Handle non-field errors
+      return Array.isArray(data.non_field_errors) ? data.non_field_errors[0] : data.non_field_errors;
+    } else if (data.message) {
+      // Handle general message
+      return data.message;
+    } else if (data.detail) {
+      // Handle detail field
+      return data.detail;
+    } else {
+      // Extract first error if it's an object
+      const firstKey = Object.keys(data)[0];
+      if (firstKey && data[firstKey]) {
+        const firstError = data[firstKey];
+        return Array.isArray(firstError) ? firstError[0] : firstError;
+      }
+      return 'Subscription failed. Please try again.';
     }
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Clear previous messages
+    setServerMessage(null);
+    
+    // Validate email
+    if (!email || !email.includes('@')) {
+      const errorMsg = 'Please enter a valid email address';
+      toast.error(errorMsg);
+      setServerMessage(errorMsg);
+      setIsSuccess(false);
+      return;
+    }
+
+    // Submit subscription
+    subscribeMutation.mutate({ email });
   };
 
   const handleNavigation = (path: string) => {
@@ -169,20 +268,41 @@ function Footer() {
                     type="email"
                     placeholder="Your email address"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      // Clear message when user starts typing
+                      if (serverMessage) setServerMessage(null);
+                    }}
                     required
+                    disabled={subscribeMutation.isPending}
                     className="ks-email-input"
                   />
-                  <button type="submit" className="ks-submit-button">
-                    <span>Subscribe</span>
-                    <ArrowIcon />
+                  <button 
+                    type="submit" 
+                    className="ks-submit-button"
+                    disabled={subscribeMutation.isPending}
+                  >
+                    {subscribeMutation.isPending ? (
+                      <>
+                        <div className="ks-spinner-icon">
+                          <SpinnerIcon />
+                        </div>
+                        <span>Subscribing...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Subscribe</span>
+                        <ArrowIcon />
+                      </>
+                    )}
                   </button>
                 </div>
                 
-                {isSubscribed && (
-                  <div className="ks-success-message">
-                    <CheckIcon />
-                    <span>Thank you for subscribing!</span>
+                {/* Server Response Message */}
+                {serverMessage && (
+                  <div className={`ks-server-message ${isSuccess ? 'success' : 'error'}`}>
+                    {isSuccess ? <CheckIcon /> : null}
+                    <span>{serverMessage}</span>
                   </div>
                 )}
 

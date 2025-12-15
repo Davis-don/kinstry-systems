@@ -427,6 +427,11 @@
   transform: translateY(-1px);
 }
 
+.ks-email-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .ks-submit-button {
   display: flex;
   align-items: center;
@@ -455,13 +460,20 @@
   transition: opacity 0.3s ease;
 }
 
-.ks-submit-button:hover {
+.ks-submit-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--glow-combined);
 }
 
-.ks-submit-button:hover::before {
+.ks-submit-button:hover:not(:disabled)::before {
   opacity: 1;
+}
+
+.ks-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .ks-submit-button svg {
@@ -470,26 +482,41 @@
   transition: transform 0.3s ease;
 }
 
-.ks-submit-button:hover svg {
+.ks-submit-button:hover:not(:disabled) svg {
   transform: translateX(3px);
 }
 
-/* Success Message */
-.ks-success-message {
+/* Spinner Animation */
+.ks-submit-button .ks-spinner-icon {
+  animation: ksSpinnerRotate 1.5s linear infinite;
+}
+
+/* Server Message Styling */
+.ks-server-message {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 1rem;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid var(--accent-green);
   border-radius: var(--radius-lg);
-  color: var(--accent-green);
   font-size: 0.875rem;
   font-weight: 500;
   animation: ksFadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
 }
 
-.ks-success-message svg {
+.ks-server-message.success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.ks-server-message.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.ks-server-message svg {
   flex-shrink: 0;
   animation: ksCheckPulse 1.5s ease-in-out infinite;
 }
@@ -772,6 +799,16 @@
   }
 }
 
+/* Spinner Animation */
+@keyframes ksSpinnerRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Dark Theme Adjustments */
 .dark-theme .ks-newsletter-card {
   background: rgba(31, 41, 55, 0.7);
@@ -846,13 +883,14 @@
   .ks-logo-glow,
   .ks-newsletter-card::before,
   .ks-newsletter-badge,
-  .ks-success-message svg,
+  .ks-server-message svg,
   .ks-divider-dot,
   .ks-legal-toggle,
   .ks-nav-link,
   .ks-submit-button,
   .ks-contact-icon,
-  .ks-footer-logo {
+  .ks-footer-logo,
+  .ks-submit-button .ks-spinner-icon {
     animation: none !important;
     transition: none !important;
   }

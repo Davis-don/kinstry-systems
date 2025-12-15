@@ -21,10 +21,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from user.views import CustomTokenView
+from newsletter.views import create_newsletter_email
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
     path('token/', CustomTokenView.as_view(), name='token_obtain_pair'),
+    path('newsletter/subscribe/', create_newsletter_email, name='create_newsletter_email'),
     path('token_refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
