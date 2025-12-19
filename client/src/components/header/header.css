@@ -36,135 +36,95 @@ a {
 }
 
 /* ===== Logo Styles ===== */
-.header-logo-container {
-  flex-shrink: 0;
-  z-index: 101;
-  min-width: 0;
-}
-
+/* ===== Pure HTML Logo (Header) ===== */
 .logo-graphic {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
-  transition: transform var(--transition-normal);
-  text-decoration: none;
-}
-
-.logo-graphic:hover {
-  transform: scale(1.02);
+  user-select: none;
 }
 
 .logo-k-wrapper {
   position: relative;
   width: 40px;
   height: 40px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--glow-combined);
   flex-shrink: 0;
 }
 
-.logo-k-vertical,
-.logo-k-diagonal-1,
+/* Vertical stem */
+.logo-k-vertical {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  box-shadow: var(--glow-green);
+}
+
+/* Upper diagonal */
+.logo-k-diagonal-1 {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 18px;
+  background: var(--gradient-primary);
+  transform: rotate(45deg);
+  transform-origin: top left;
+  border-radius: var(--radius-full);
+}
+
+/* Lower diagonal */
 .logo-k-diagonal-2 {
   position: absolute;
-  background-color: white;
-  border-radius: 3px;
-}
-
-.logo-k-vertical {
-  width: 5px;
-  height: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.logo-k-diagonal-1 {
-  width: 5px;
-  height: 14px;
-  top: 50%;
-  right: 20%;
-  transform: rotate(-45deg) translateY(-50%);
-  transform-origin: right center;
-}
-
-.logo-k-diagonal-2 {
-  width: 5px;
-  height: 14px;
-  top: 50%;
-  right: 20%;
-  transform: rotate(45deg) translateY(-50%);
-  transform-origin: right center;
+  left: 8px;
+  bottom: 4px;
+  width: 6px;
+  height: 18px;
+  background: var(--gradient-primary);
+  transform: rotate(-45deg);
+  transform-origin: bottom left;
+  border-radius: var(--radius-full);
 }
 
 .logo-text-container {
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  overflow: hidden;
+  line-height: 1;
 }
 
 .logo-text-kinstry {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.5px;
-  line-height: 1;
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .logo-text-systems {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
   color: var(--secondary-text);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-top: 0.1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
-.logo-subtitle-container {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+/* Hover polish */
+.logo-graphic:hover .logo-k-vertical,
+.logo-graphic:hover .logo-k-diagonal-1,
+.logo-graphic:hover .logo-k-diagonal-2 {
+  box-shadow: var(--glow-combined);
 }
 
-.logo-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--gradient-secondary);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  flex-shrink: 0;
+.logo-graphic:hover .logo-text-kinstry {
+  filter: brightness(1.1);
 }
 
-@keyframes pulse {
-  0%, 100% { 
-    opacity: 1; 
-    transform: scale(1); 
-    box-shadow: var(--glow-green);
-  }
-  50% { 
-    opacity: 0.7; 
-    transform: scale(0.9); 
-    box-shadow: var(--glow-cyan);
-  }
-}
+
 
 /* ===== Desktop Navigation ===== */
 .desktop-navigation-links {
@@ -927,5 +887,47 @@ body.sidebar-open {
   
   .nav-item {
     font-size: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+  .logo-text-kinstry {
+    font-size: 1.9rem;
+  }
+
+  .logo-k-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .logo-text-kinstry {
+    font-size: 2.2rem;
+  }
+
+  .logo-text-systems {
+    font-size: 0.85rem;
+  }
+
+  .logo-k-wrapper {
+    width: 48px;
+    height: 48px;
   }
 }
